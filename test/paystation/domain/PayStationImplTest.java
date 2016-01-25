@@ -152,5 +152,19 @@ public class PayStationImplTest {
                 15, ps.empty());
     }
     
+    /**
+     * Canceling a coin entry should cause the empty method to return zero.
+     */
+    @Test
+    public void shouldNotAddToEmpty() throws IllegalCoinException
+    {
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.cancel();
+        assertEquals("Canceled entry does not add to amount returned by empty",
+                0,ps.empty());
+    }
+    
     
 }

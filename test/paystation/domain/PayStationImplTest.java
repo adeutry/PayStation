@@ -167,7 +167,20 @@ public class PayStationImplTest {
                 0,ps.empty());
     }
     
-    
+     /**
+     * Calling empty resets the total amount entered to zero
+     */
+    @Test
+    public void shouldResetToZero()
+            throws IllegalCoinException
+    {
+        ps.addPayment(10);
+        ps.addPayment(5);
+        ps.empty();
+        assertEquals("Call to empty should reset time total to zero",
+                0, ps.readDisplay() );
+        
+    }
     
     
 }

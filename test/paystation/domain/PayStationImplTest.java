@@ -180,7 +180,7 @@ public class PayStationImplTest {
         assertEquals("Call to empty should reset time total to zero",
                 0, ps.readDisplay() );
         
-    }
+    } 
     
     
 }

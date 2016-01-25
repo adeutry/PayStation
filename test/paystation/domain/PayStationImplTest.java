@@ -142,6 +142,7 @@ public class PayStationImplTest {
     /**
      * Calling empty should return the total amount of money entered
      */
+    @Test
     public void shouldReturnAmountEntered()
             throws IllegalCoinException
     {

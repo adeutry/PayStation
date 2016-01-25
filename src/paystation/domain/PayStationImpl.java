@@ -56,8 +56,44 @@ public class PayStationImpl implements PayStation {
     @Override
     public Map<Integer, Integer> cancel(){
         Map<Integer, Integer> coinMap = new HashMap<Integer, Integer>();
+        while(insertedSoFar > 0)
+        {
+            if(insertedSoFar >= 25)
+            {
+                if(coinMap.containsKey(25))
+                {
+                    coinMap.put(25, coinMap.get(25) + 1);
+                }else{
+                    coinMap.put(25, 1);
+                }
+                
+                insertedSoFar -= 25;
+                
+            }else if( insertedSoFar >= 10 )
+            {
+                if(coinMap.containsKey(10))
+                {
+                    coinMap.put(10, coinMap.get(10) + 1);
+                }else{
+                    coinMap.put(10, 1);
+                }
+                
+                insertedSoFar -= 10;
+                
+            }else{
+                
+                if(coinMap.containsKey(5))
+                {
+                    coinMap.put(5, coinMap.get(5) + 1);
+                }else{
+                    coinMap.put(5, 1);
+                }
+                
+                insertedSoFar -= 10;
+            }
+        }
         reset();
-        return null;
+        return coinMap;
     }
     
     @Override

@@ -11,6 +11,7 @@
  */
 package paystation.domain;
 
+import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -181,6 +182,22 @@ public class PayStationImplTest {
                 0, ps.readDisplay() );
         
     } 
+    
+    /**
+     * Calling cancel after inserting one coin returns a map containing one coin
+     * entered.
+     */
+    @Test
+    public void shouldReturnOneCoin() throws IllegalCoinException
+    {
+        ps.addPayment(10);
+        Map<Integer,Integer> map = ps.cancel();
+        assertEquals("Call to cancel should return single coin",
+                1, map.size());
+        assertEquals("Should return single 10 cent coin",
+                (Integer)1, map.get(10));
+        
+    }
     
     
 }

@@ -250,6 +250,6 @@ public class PayStationImplTest {
         Map<Integer,Integer> map = ps.cancel();
         assertEquals("Cancelling transaction should clear the map",
                 0,map.size());
-    }
+    } 
 }
  

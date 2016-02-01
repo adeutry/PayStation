@@ -222,4 +222,20 @@ public class PayStationImplTest {
                 (Integer)1, map.get(25));
         
     }
+    
+    
+    /**
+     * A call to cancel should not return a map which contains a key for a coin
+     * not entered.
+     */
+    @Test
+    public void shouldNotReturnCoinNotEntered() throws IllegalCoinException
+    {
+        ps.addPayment(5);
+        ps.addPayment(5);
+        ps.addPayment(5);
+        Map<Integer,Integer> map = ps.cancel();
+        assertEquals("cancelling transaction should not return coins which were not entered",
+                false, map.containsKey(25) );
+    }
 }

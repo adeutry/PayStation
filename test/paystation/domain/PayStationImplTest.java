@@ -263,7 +263,7 @@ public class PayStationImplTest {
         ps.buy();
         Map<Integer,Integer> map = ps.cancel();
         assertEquals("Finalizing and buying ticket should clear the map",
-                0, map.size());
+                0, map.size()); 
         
     }
 }

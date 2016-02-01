@@ -212,7 +212,7 @@ public class PayStationImplTest {
         Map<Integer,Integer> map = ps.cancel();
         assertEquals("Call to cancel should return two coins", 
                 2, map.size());
-        assertEquals("Call to cancel should return quarter", 
+        assertEquals("Call to cancel should return quarter",  
                 true, map.containsKey(25));
         assertEquals("Call to cancel should return quarter and nickel", 
                 true, map.containsKey(5));

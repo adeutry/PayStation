@@ -238,5 +238,18 @@ public class PayStationImplTest {
         assertEquals("cancelling transaction should not return coins which were not entered",
                 false, map.containsKey(25) );
     }
+    
+     /**
+     * A call to cancel should clear the map
+     */
+    @Test
+    public void shouldClearMapOnCancel() throws IllegalCoinException
+    {
+        ps.addPayment(25);
+        ps.cancel();
+        Map<Integer,Integer> map = ps.cancel();
+        assertEquals("Cancelling transaction should clear the map",
+                0,map.size());
+    }
 }
  

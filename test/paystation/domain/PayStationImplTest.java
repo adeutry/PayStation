@@ -251,5 +251,20 @@ public class PayStationImplTest {
         assertEquals("Cancelling transaction should clear the map",
                 0,map.size());
     } 
+    
+     /**
+     * A call to buy() should also clear the map
+     */
+    @Test
+    public void shouldClearMapOnBuy() throws IllegalCoinException
+    {
+        ps.addPayment(25);
+        ps.addPayment(25);
+        ps.buy();
+        Map<Integer,Integer> map = ps.cancel();
+        assertEquals("Finalizing and buying ticket should clear the map",
+                0, map.size());
+        
+    }
 }
  

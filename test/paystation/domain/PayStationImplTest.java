@@ -199,5 +199,27 @@ public class PayStationImplTest {
         
     }
     
-    
+     /**
+     * Calling cancel after returning several coins returns a map of a mixture
+     * of coins.
+     */
+    @Test
+    public void shouldReturnCoinMixture() throws IllegalCoinException
+    {
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.addPayment(10);
+        Map<Integer,Integer> map = ps.cancel();
+        assertEquals("Call to cancel should return two coins", 
+                2, map.size());
+        assertEquals("Call to cancel should return quarter", 
+                true, map.containsKey(25));
+        assertEquals("Call to cancel should return quarter and nickel", 
+                true, map.containsKey(5));
+        assertEquals("Call to cancel should return one nickel", 
+                (Integer)1, map.get(5));
+        assertEquals("Call to cancel should return one quarter", 
+                (Integer)1, map.get(25));
+        
+    }
 }
